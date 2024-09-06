@@ -92,7 +92,7 @@ export default async function NewTicket(){
             Você ainda não tem nenhum cliente, <span className="text-blue-500 font-medium">Cadastrar cliente</span></Link>
           )}
 
-          <button type="submit" className="bg-blue-500 text-white font-bold px-2 h-11 rounded-md my-4 disabled: bg-gray-400 disabled:cursor-not-allowed"
+          <button type="submit" className="bg-blue-500 text-white font-bold px-2 h-11 rounded-md my-4 disabled:bg-gray-400 disabled:cursor-not-allowed"
           disabled={customers.length === 0}
           > 
             Cadastrar

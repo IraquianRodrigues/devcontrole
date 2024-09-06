@@ -47,7 +47,7 @@ export default async function Dashboard() {
        </thead>
       
       <tbody>
-       
+      
       </tbody>
        
       </table>
