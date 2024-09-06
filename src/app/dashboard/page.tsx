@@ -47,13 +47,7 @@ export default async function Dashboard() {
        </thead>
       
       <tbody>
-        {tickets.map(ticket =>(
-            <TicketItem 
-            key={ticket.id}
-            customer={ticket.customer}
-            ticket={ticket}
-            />
-        ))}
+       
       </tbody>
        
       </table>
