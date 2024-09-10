@@ -1,6 +1,6 @@
 import { customerProps } from "@/utils/customer.type";
 import { TicketProps } from "@/utils/ticket.type"
-import { FiTrash2, FiFile } from "react-icons/fi"
+import { FiCheckSquare , FiFile } from "react-icons/fi"
 
 interface TicketItemProps{
   ticket: TicketProps;
@@ -18,7 +18,7 @@ export function TicketItem({customer, ticket}:TicketItemProps){
               </td>
               <td className="text-left">
                 <button className="mr-2">
-                    <FiTrash2 size={24} color="#EF4444"/>
+                    <FiCheckSquare size={24} color="#131313"/>
                 </button>
                 <button>
                     <FiFile size={24} color="#3B8BF6"/>
