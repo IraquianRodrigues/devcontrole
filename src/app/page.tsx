@@ -12,7 +12,11 @@ export default function Home() {
         width={600}
         className="max-w-sm md:max-w-xl"
       />
-    </main>    
-    
+      
+      <footer className="mt-10">
+       <span className="font-bold flex">Desenvolvido por @CactusBits</span>
+     </footer>
+
+    </main>     
   )
 }

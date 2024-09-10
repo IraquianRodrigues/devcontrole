@@ -14,6 +14,8 @@ export default async function Dashboard() {
  if(!session || !session.user){
   redirect("/")
  }
+
+ //procurar no banco de dados se o ticket estiver aberto
  const tickets = await prismaClient.ticket.findMany({
   where:{
     userId: session.user.id,
