@@ -24,7 +24,6 @@ export async function PATCH(request: Request){
     return NextResponse.json({ error: "Filed update ticket" }, { status: 400 })
   }
 
-
   try{
     await prismaClient.ticket.update({
       where:{
@@ -41,5 +40,31 @@ export async function PATCH(request: Request){
     return NextResponse.json({ error: "Filed update ticket" }, { status: 400 })
   }
 
+}
 
+// rota para cadastrar um novo ticket
+
+export async function POST(request: Request){
+  const {customerId, name, description} = await request.json()
+
+  // caso o cliente nao mande os dados
+  if(!customerId || !name || !description){
+    return NextResponse.json({message: "Cadastrado com sucesso"})
+  }
+
+  try{
+    await prismaClient.ticket.create({
+      data:{
+        name: name,
+        description: description,
+        status: "ABERTO",
+        customerId: customerId,
+      }
+    })
+
+    return NextResponse.json({message: "Chamado registrado com sucesso!"})
+
+  }catch(err){
+    return NextResponse.json({error: "Failed create new ticker"}, {status:400})
+  }
 }

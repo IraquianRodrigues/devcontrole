@@ -17,6 +17,7 @@ const schema = z.object({
         message: "o numero de telefone deve estar (DD) 999999999"
     }),
     address: z.string(),
+    description: z.string()
 })
 
 type FormData = z.infer<typeof schema>
@@ -34,7 +35,8 @@ export function NewCostumerForm({userId}: {userId: string}){
         phone: data.phone,
         email: data.email,
         address: data.address,
-        userId: userId
+        userId: userId,
+        description: data.description
       })
 
       router.refresh()

@@ -26,7 +26,6 @@ export function Header() {
           </h1>
         </Link>
 
-
         {status === "loading" && (
           <button className="animate-spin">
             <FiLoader size={26} color="#4b5563" />
@@ -50,8 +49,6 @@ export function Header() {
             </button>
           </div>
         )}
-
-
       </div>
     </header>
   )

@@ -4,6 +4,32 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import prismaClient from '@/lib/prisma'
 
+// buscar cliente a partir do email
+export async function GET(request:Request){
+  const {searchParams} = new URL(request.url)
+  const customerEmail = searchParams.get("email")
+
+  if(!customerEmail || customerEmail === ""){
+    return NextResponse.json({error: "Customer not found"}, { status:400})
+  }
+
+  try{
+    const customer = await prismaClient.customer.findFirst({
+      where:{
+        email: customerEmail
+      }
+    })
+
+    return NextResponse.json(customer)
+
+  }catch(err){
+    return NextResponse.json({error: "Customer not found"}, { status:400})
+  }
+
+  return NextResponse.json({message: "Recebido"})
+
+}
+
 //ROTA DELETAR CLIENTE
 export async function DELETE(request: Request){
   const session = await getServerSession(authOptions);
@@ -53,7 +79,7 @@ export async function POST(request: Request){
     return NextResponse.json({ error: "Not authorized" }, { status: 401 })
   }
 
-  const { name, email, phone, address, userId } = await request.json();
+  const { name, email, phone, address, userId, description } = await request.json();
 
   try{
     await prismaClient.customer.create({
@@ -62,7 +88,7 @@ export async function POST(request: Request){
         phone,
         email,
         address: address ? address : "",
-        userId: userId
+        userId: userId,
       }
     })
 

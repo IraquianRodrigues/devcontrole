@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//model clientes
+//modal clientes
 model Customer {
   id      String @id @default(auto()) @map("_id") @db.ObjectId
   name    String
@@ -29,11 +29,11 @@ model Customer {
   tickets Ticket[]
 }
 
-//model dos tickets
+//modal dos tickets
 model Ticket {
   id            String @id @default(auto()) @map("_id") @db.ObjectId
   name          String
-  descripiton   String
+  description   String?
   status        String
   created_at    DateTime? @default(now())
   updated_at    DateTime? @default(now())
@@ -45,7 +45,7 @@ model Ticket {
   User User? @relation(fields: [userId], references: [id])
 }
 
-//model da conta
+//modal da conta
 model Account {
   id                 String  @id @default(auto()) @map("_id") @db.ObjectId
   userId             String  @db.ObjectId

@@ -24,17 +24,18 @@ export default async function NewTicket(){
       "use server"
 
       const name = formData.get("name")
-      const description = formData.get("description")
+      const description = formData.get("descripiton")
       const customerId = formData.get("customer")
 
       if(!name || !description || !customerId){
         return
       }
 
+      // função abrir novo chamado
       await prismcaClient.ticket.create({
         data:{
           name: name as string,
-          descripiton: description as string,
+          description: description as string,
           customerId: customerId as string,
           status: 'ABERTO',
           userId: session?.user.id

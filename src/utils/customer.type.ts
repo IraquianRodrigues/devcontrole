@@ -1,5 +1,4 @@
-
-export interface customerProps {
+export interface CustomerProps {
     id: string;
     name: string;
     phone: string;
